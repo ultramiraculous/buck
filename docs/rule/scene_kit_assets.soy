@@ -1,0 +1,56 @@
+{namespace buck.scene_kit_assets}
+
+/***/
+{template .soyweb}
+  {call buck.page}
+    {param title: 'scene_kit_assets()' /}
+    {param prettify: true /}
+    {param description}
+      A rule that is used to represent SceneKit a directory containing 
+      3D model/texture/etc. assets for Apple's SceneKit framework.
+    {/param}
+    {param content}
+
+{call buck.rule}
+{param status: 'UNFROZEN' /}
+{param overview}
+A <code>scene_kit_assets()</code> rule is used to represent SceneKit a directory containing 
+3D model/texture/etc. assets for Apple's SceneKit framework.
+
+ This rule does not have any output on its own and can be built only as a dependency
+(either direct or transitive) of an <a href="{ROOT}rule/apple_bundle.html">
+<code>apple_bundle()</code> rule</a>, in which case all <code>scene_kit_assets()</code> rules
+that the bundle rule depends on are merged and placed into the final output bundle together.
+{/param}
+
+{param args}
+
+{call buck.arg}
+  {param name: 'name' /}
+  {param desc}
+  The name of the rule.
+  {/param}
+{/call}
+
+{call buck.arg}
+  {param name: 'path' /}
+  {param desc}
+  Relative path of the .xcdatamodeld package directory.
+  {/param}
+{/call}
+
+{/param} // args
+
+{param examples}
+{literal}<pre class="prettyprint lang-py">
+scene_kit_assets(
+  name = 'DemoAppSceneKitAssets',
+  path = 'DemoApp.scnassets'
+)
+</pre>{/literal}
+{/param} // examples
+{/call} // buck.rule
+
+    {/param}
+  {/call}
+{/template}
